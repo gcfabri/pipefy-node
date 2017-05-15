@@ -1,0 +1,30 @@
+{
+  "name": "pipefy-node",
+  "version": "0.0.1",
+  "description": "An unofficial Pipefy API wrapper using node.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --reporter spec"
+  },
+  "engines": {
+    "node": ">=6.10.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gcfabri/pipefy-node.git"
+  },
+  "keywords": [
+    "pipefy",
+    "node"
+  ],
+  "author": "Gabriel Fabri <gcfabri@gmail.com> (https://github.com/gcfabri)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/gcfabri/pipefy-node/issues"
+  },
+  "homepage": "https://github.com/gcfabri/pipefy-node#readme",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.4.1"
+  }
+}
