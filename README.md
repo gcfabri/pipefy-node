@@ -26,6 +26,8 @@ run the following command:
 
 ## Usage
 
+Get the personal access token from Pipefy on this link: https://app.pipefy.com/tokens
+
 ```javascript
     var pipefy = require('pipefy-node')({
         'your_personal_access_token': '<token>'
@@ -33,7 +35,7 @@ run the following command:
 ```
 
 ## Tests
-
-    `npm test`
-
+```sh
+    $ npm run cover
+```
 
