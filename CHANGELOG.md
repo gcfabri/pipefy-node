@@ -7,3 +7,5 @@
 - Update base url from mock server to production
 
 ##### 1.0.4-alpha - 16 May 2017
+
+- Fix tests
