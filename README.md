@@ -1,8 +1,9 @@
 # pipefy-node
 
-[![npm version](https://badge.fury.io/js/pipefy-node.svg)](https://badge.fury.io/js/pipefy-node)
-[![Build Status](https://travis-ci.org/travis-ci/travis-web.svg?branch=master)](https://travis-ci.org/travis-ci/travis-web)
-[![Coverage Status](https://coveralls.io/repos/github/gcfabri/pipefy-node/badge.svg?branch=master)](https://coveralls.io/github/gcfabri/pipefy-node?branch=master)
+[![Travis](https://img.shields.io/travis/gcfabri/pipefy-node.svg?style=flat-square)](https://travis-ci.org/gcfabri/pipefy-node)
+[![npm](https://img.shields.io/npm/v/pipefy-node.svg?style=flat-square)](https://www.npmjs.com/package/pipefy-node)
+[![Coveralls](https://img.shields.io/coveralls/gcfabri/pipefy-node.svg?style=flat-square)](https://coveralls.io/github/gcfabri/pipefy-node)
+[![license](https://img.shields.io/github/license/mashape/apistatus.svg?style=flat-square)](https://github.com/gcfabri/pipefy-node/blob/master/LICENSE)
 
 An unofficial Pipefy API wrapper using node.js
 
