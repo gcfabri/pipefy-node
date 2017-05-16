@@ -8,7 +8,7 @@ An unofficial Pipefy API wrapper using node.js
 
 ## Official Reference
 
-(http://docs.pipefy.apiary.io)
+[Pipefy Apiary](http://docs.pipefy.apiary.io)
 
 ## Installation
 
