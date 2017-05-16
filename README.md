@@ -1,19 +1,31 @@
-pipefy-node
+pipefy-node (https://travis-ci.org/gcfabri/pipefy-node.svg?branch=master)
 =========
 
-## UNDER DEVELOPMENT
+## UNDER DEVELOPMENT (ALPHA)
 
 An unofficial Pipefy API wrapper using node.js
 
+## Official Reference
+
+(http://docs.pipefy.apiary.io)
+
 ## Installation
 
-    `npm install @gcfabri/pipefy-node`
+```sh
+
+    $ npm i -S pipefy-node
+
+```
 
 ## Usage
 
-    `var pipefy = require('pipefy-node');`
-    or ES6/7
-    `import pipefy from 'pipefy-node';`
+```javascript
+
+    var pipefy = new(require('pipefy-node'))({
+        'your_personal_access_token': '<token>'
+    });
+    
+```
 
 ## Tests
 
