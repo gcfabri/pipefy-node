@@ -1,8 +1,10 @@
 'use strict';
 
+require('dotenv').config();
+
 var expect = require('chai').expect;
-var pipefy = require('./index')({
-  'your_personal_access_token': '<token>'
+var pipefy = require('../index')({
+  'your_personal_access_token': process.env.PIPEFY_TOKEN
 });
 
 /*describe('#sampleFunction', function() {
