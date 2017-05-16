@@ -21,3 +21,7 @@
 ##### 1.0.7-alpha - 16 May 2017
 
 - Fix tests
+
+##### 1.0.8-alpha - 16 May 2017
+
+- Fix tests
