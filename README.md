@@ -1,9 +1,9 @@
 # pipefy-node
 
-[![Travis](https://img.shields.io/travis/gcfabri/pipefy-node.svg?style=flat-square)](https://travis-ci.org/gcfabri/pipefy-node)
-[![npm](https://img.shields.io/npm/v/pipefy-node.svg?style=flat-square)](https://www.npmjs.com/package/pipefy-node)
-[![Coveralls](https://img.shields.io/coveralls/gcfabri/pipefy-node.svg?style=flat-square)](https://coveralls.io/github/gcfabri/pipefy-node)
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg?style=flat-square)](https://github.com/gcfabri/pipefy-node/blob/master/LICENSE)
+[![npm](https://img.shields.io/npm/v/pipefy-node.svg?style=flat-square)](https://www.npmjs.com/package/pipefy-node)
+[![Travis](https://img.shields.io/travis/gcfabri/pipefy-node.svg?style=flat-square)](https://travis-ci.org/gcfabri/pipefy-node)
+[![Coveralls](https://img.shields.io/coveralls/gcfabri/pipefy-node.svg?style=flat-square)](https://coveralls.io/github/gcfabri/pipefy-node)
 
 An unofficial Pipefy API wrapper using node.js
 
@@ -27,7 +27,7 @@ run the following command:
 ## Usage
 
 ```javascript
-    var pipefy = new(require('pipefy-node'))({
+    var pipefy = require('pipefy-node')({
         'your_personal_access_token': '<token>'
     });
 ```

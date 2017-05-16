@@ -657,8 +657,8 @@ function Pipefy(config) {
     });
   };
 
-  return this;
-  
 }
 
-module.exports = Pipefy;
+module.exports = function(config) {
+    return new Pipefy(config);
+};
