@@ -1,4 +1,5 @@
-pipefy-node (https://travis-ci.org/gcfabri/pipefy-node.svg?branch=master)
+pipefy-node 
+[![Build Status](https://travis-ci.org/travis-ci/travis-web.svg?branch=master)](https://travis-ci.org/travis-ci/travis-web)
 =========
 
 ## UNDER DEVELOPMENT (ALPHA)
