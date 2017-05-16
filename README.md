@@ -1,6 +1,7 @@
-pipefy-node 
+pipefy-node
 [![Build Status](https://travis-ci.org/travis-ci/travis-web.svg?branch=master)](https://travis-ci.org/travis-ci/travis-web)
 [![Coverage Status](https://coveralls.io/repos/github/gcfabri/pipefy-node/badge.svg?branch=master)](https://coveralls.io/github/gcfabri/pipefy-node?branch=master)
+=========
 
 ## UNDER DEVELOPMENT (ALPHA)
 
