@@ -654,11 +654,5 @@ function Pipefy(config) {
 }
 
 module.exports = function(config) {
-  if(!config) {
-    throw new Error('No config parameters specified.');
-  } else if(!config.your_personal_access_token) {
-    throw new Error('No your_personal_access_token parameter specified.');
-  } else {
-    return new Pipefy(config);
-  }
+  return new Pipefy(config);
 };

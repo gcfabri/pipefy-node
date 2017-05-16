@@ -9,3 +9,15 @@
 ##### 1.0.4-alpha - 16 May 2017
 
 - Fix tests
+
+##### 1.0.5-alpha - 16 May 2017
+
+- Fix tests
+
+##### 1.0.6-alpha - 16 May 2017
+
+- Fix tests
+
+##### 1.0.7-alpha - 16 May 2017
+
+- Fix tests
