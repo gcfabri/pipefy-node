@@ -4,6 +4,12 @@ var request = require('request');
 
 function Pipefy(config) {
 
+  if(!config) {
+    console.error(`No 'config' parameter specified.`);
+  } else if (!config.your_personal_access_token) {
+    console.error(`No 'your_personal_access_token' specified.`);
+  }
+
   var baseUrl = 'https://app.pipefy.com/queries';
   var bearerToken = 'Bearer ' + config.your_personal_access_token;
 
@@ -63,7 +69,7 @@ function Pipefy(config) {
         'Content-Type': 'application/json',
         'Authorization': bearerToken
       },
-      body: `{  \"query\": \"{ pipes(ids: ${ids}){ id, name, phases{ name, cards(first: 10){ edges{ node{ id, title } } } } } }\"}`
+      body: `{  \"query\": \"{ pipes(ids: [${ids}]){ id, name, phases{ name, cards(first: 10){ edges{ node{ id, title } } } } } }\"}`
     }, function(error, response, body) {
       console.log('Status:', response.statusCode);
       /*console.log('Headers:', JSON.stringify(response.headers));*/
@@ -143,7 +149,7 @@ function Pipefy(config) {
         'Content-Type': 'application/json',
         'Authorization': bearerToken
       },
-      body: `{  \"query\": \"{ pipe_relations(ids: ${ids}) { id, name, parent_id, child_id, can_create_connected_cards, can_search_connected_cards, can_connect_multiple_cards, child_must_exist_to_move_parent, child_must_exist_to_finish_parent, all_children_must_be_done_to_finish_parent, all_children_must_be_done_to_move_parent, child_name } }\"}`
+      body: `{  \"query\": \"{ pipe_relations(ids: [${ids}]) { id, name, parent_id, child_id, can_create_connected_cards, can_search_connected_cards, can_connect_multiple_cards, child_must_exist_to_move_parent, child_must_exist_to_finish_parent, all_children_must_be_done_to_finish_parent, all_children_must_be_done_to_move_parent, child_name } }\"}`
     }, function(error, response, body) {
       console.log('Status:', response.statusCode);
       /*console.log('Headers:', JSON.stringify(response.headers));*/
@@ -151,14 +157,13 @@ function Pipefy(config) {
     });
   };
 
-  /* TODO: Validar o porque do params.industry ter valores certos a serem passados. Validar quais. */
   this.createOrganization = function(params) {
     request({
       method: 'POST',
       url: baseUrl,
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJ1c2VyIjp7ImlkIjo4MTYyMiwiZW1haWwiOiJzeXMuYWRtaW5AaW5vYnJheC5jb20iLCJhcHBsaWNhdGlvbiI6Mzk3NX19.xDcmI9s6n21Rn3dDKP7T7UWvLwWdZpHJUUE3UErzm5deBnspq-C2rLajPy3zjrhb9uwgw3xm5e_WT-Z_CyQTTA'
+        'Authorization': bearerToken
       },
       body: `{  \"query\": \"mutation { createOrganization(input: {industry: \\"${params.industry}\\", name: \\"${params.name}\\"}){ organization{ id, name } } }\"}`
     }, function(error, response, body) {
@@ -176,9 +181,7 @@ function Pipefy(config) {
         'Content-Type': 'application/json',
         'Authorization': bearerToken
       },
-      body: `{  \"query\": \"mutation{ updateOrganization(input:{id: ${params.id}, name: \\"
-      ${params.name}\\
-      ", only_admin_can_invite_users: ${params.only_admin_can_invite_users} }) { organization{ name, only_admin_can_create_pipes, only_admin_can_invite_users, force_omniauth_to_normal_users } } }\"}`
+      body: `{  \"query\": \"mutation{ updateOrganization(input:{id: ${params.id}, name: \\"${params.name}\\", only_admin_can_invite_users: ${params.only_admin_can_invite_users}, only_admin_can_create_pipes: ${params.only_admin_can_create_pipes}, force_omniauth_to_normal_users: ${params.force_omniauth_to_normal_users} }) { organization{ name, only_admin_can_create_pipes, only_admin_can_invite_users, force_omniauth_to_normal_users } } }\"}`
     }, function(error, response, body) {
       console.log('Status:', response.statusCode);
       /*console.log('Headers:', JSON.stringify(response.headers));*/

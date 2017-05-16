@@ -25,3 +25,7 @@
 ##### 1.0.8-alpha - 16 May 2017
 
 - Fix tests
+
+##### 1.0.9-alpha - 16 May 2017
+
+- Some bugs
