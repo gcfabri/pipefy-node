@@ -44,5 +44,11 @@
 
 ##### 1.0.13-alpha - 17 May 2017
 
-- Alpha tests (2/4)
+- Alpha tests (2/5)
+
+##### 1.2.16-alpha - 17 May 2017
+
+- Added Promises support
+- Added levelLog support
+- Aplha tests (5/5)
 

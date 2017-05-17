@@ -1,6 +1,6 @@
 {
   "name": "pipefy-node",
-  "version": "1.0.13-alpha",
+  "version": "1.2.16-alpha",
   "description": "An unofficial Pipefy API wrapper using node.js",
   "main": "index.js",
   "scripts": {
@@ -28,11 +28,12 @@
   "devDependencies": {
     "chai": "^3.5.0",
     "coveralls": "^2.13.1",
-    "dotenv": "^4.0.0",
     "istanbul": "^0.4.5",
     "mocha": "^3.4.1"
   },
   "dependencies": {
-    "request": "^2.81.0"
+    "loglevel": "^1.4.1",
+    "request": "^2.81.0",
+    "request-promise": "^4.2.1"
   }
 }

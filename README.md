@@ -34,7 +34,8 @@ Get the personal access token from Pipefy on this link: https://app.pipefy.com/t
 
 ```javascript
     var pipefy = require('pipefy-node')({
-        'your_personal_access_token': '<token>'
+        your_personal_access_token: '<token>',
+        logLevel: '<['info', 'warn', 'debug', 'trace']>'
     });
 ```
 
