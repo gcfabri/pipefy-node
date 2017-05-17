@@ -326,7 +326,7 @@ function Pipefy(config) {
         'Content-Type': 'application/json',
         'Authorization': bearerToken
       },
-      body: `{  \"query\": \"mutation{ createPhaseField(input: { phase_id: ${params.phase_id}, label: \\"${params.label}\\", description: \\"${params.description}\\", required: ${params.required}, help: \\"${params.help}\\", editable: ${params.editable}, can_create_database_record: ${params.can_create_database_record}, can_have_multiple_database_records: ${params.can_have_multiple_database_records}, sync_with_card: ${params.sync_with_card} } ) { phase_field{ id, type, description, phase{ name } } } }\"}`
+      body: `{  \"query\": \"mutation{ createPhaseField(input: { phase_id: ${params.phase_id}, type: \\"${params.type}\\", label: \\"${params.label}\\", description: \\"${params.description}\\", required: ${params.required}, help: \\"${params.help}\\", editable: ${params.editable}, can_create_database_record: ${params.can_create_database_record}, can_have_multiple_database_records: ${params.can_have_multiple_database_records}, sync_with_card: ${params.sync_with_card} } ) { phase_field{ id, type, description, phase{ name } } } }\"}`
     }, function(error, response, body) {
       console.log('Status:', response.statusCode);
       /*console.log('Headers:', JSON.stringify(response.headers));*/
@@ -502,7 +502,7 @@ function Pipefy(config) {
         'Content-Type': 'application/json',
         'Authorization': bearerToken
       },
-      body: `{  \"query\": \"mutation { createComment(input: {card_id: ${params.card_id}, text: \\"${params.text}\\"}) { comment { text } } }\"}`
+      body: `{  \"query\": \"mutation { createComment(input: {card_id: ${params.card_id}, text: \\"${params.text}\\"}) { comment { id, text } } }\"}`
     }, function(error, response, body) {
       console.log('Status:', response.statusCode);
       /*console.log('Headers:', JSON.stringify(response.headers));*/
@@ -606,7 +606,7 @@ function Pipefy(config) {
     });
   };
 
-  this.createWebhook = function(params) {
+  /*this.createWebhook = function(params) {
     request({
       method: 'POST',
       url: baseUrl,
@@ -617,12 +617,12 @@ function Pipefy(config) {
       body: `{  \"query\": \"mutation { createWebhook(input: { pipe_id: ${params.pipe_id}, name: \\"${params.name}\\", email: \\"${params.email}\\", url: \\"${params.url}\\", actions: [\\"${params.actions[0]}\\", \\"${params.actions[1]}\\"], headers: \\"{\\\\"Custom-Header\\\\": \\\\"in json format\\\\"}\\" }) { webhook { id, name, email, url, actions, headers } } }\"}`
     }, function(error, response, body) {
       console.log('Status:', response.statusCode);
-      /*console.log('Headers:', JSON.stringify(response.headers));*/
+      console.log('Headers:', JSON.stringify(response.headers));
       console.log('Response:', body);
     });
-  };
+  };*/
 
-  this.updateWebhook = function(params) {
+  /*this.updateWebhook = function(params) {
     request({
       method: 'POST',
       url: baseUrl,
@@ -633,12 +633,12 @@ function Pipefy(config) {
       body: `{  \"query\": \"mutation { updateWebhook(input: { id: ${params.id}, name: \\"${params.name}\\", email: \\"${params.email}\\", url: \\"${params.url}\\", actions: [\\"${params.actions[0]}\\", \\"${params.actions[1]}\\"], headers: \\"{\\\\"Custom-Header\\\\": \\\\"in json format\\\\"}\\" }) { webhook { id, name, email, url, actions, headers } } }\"}`
     }, function(error, response, body) {
       console.log('Status:', response.statusCode);
-      /*console.log('Headers:', JSON.stringify(response.headers));*/
+      console.log('Headers:', JSON.stringify(response.headers));
       console.log('Response:', body);
     });
-  };
+  };*/
 
-  this.deleteWebhook = function(id) {
+  /*this.deleteWebhook = function(id) {
     request({
       method: 'POST',
       url: baseUrl,
@@ -649,10 +649,10 @@ function Pipefy(config) {
       body: `{  \"query\": \"mutation { deleteWebhook(input: { id: ${id} }) { success } }\"}`
     }, function(error, response, body) {
       console.log('Status:', response.statusCode);
-      /*console.log('Headers:', JSON.stringify(response.headers));*/
+      console.log('Headers:', JSON.stringify(response.headers));
       console.log('Response:', body);
     });
-  };
+  };*/
 
 }
 

@@ -37,3 +37,8 @@
 ##### 1.0.11-alpha - 17 May 2017
 
 - Bugs n fixes
+
+##### 1.0.12-alpha - 17 May 2017
+
+- Alpha tests
+
