@@ -326,7 +326,7 @@ function Pipefy(config) {
         'Content-Type': 'application/json',
         'Authorization': bearerToken
       },
-      body: `{  \"query\": \"mutation{ createPhaseField(input: { phase_id: ${params.phase_id}, type_id: \\"${params.type_id}\\", label: \\"${params.label} \\", index: ${params.index}, description: \\"${params.description}\\", required: ${params.required}, help: \\"${params.help}\\", editable: ${params.editable}, can_create_database_record: ${params.can_create_database_record}, can_have_multiple_database_records: ${params.can_have_multiple_database_records}, sync_with_card: ${params.sync_with_card} } ) { phase_field{ id, type, description, phase{ name } } } }\"}`
+      body: `{  \"query\": \"mutation{ createPhaseField(input: { phase_id: ${params.phase_id}, label: \\"${params.label}\\", description: \\"${params.description}\\", required: ${params.required}, help: \\"${params.help}\\", editable: ${params.editable}, can_create_database_record: ${params.can_create_database_record}, can_have_multiple_database_records: ${params.can_have_multiple_database_records}, sync_with_card: ${params.sync_with_card} } ) { phase_field{ id, type, description, phase{ name } } } }\"}`
     }, function(error, response, body) {
       console.log('Status:', response.statusCode);
       /*console.log('Headers:', JSON.stringify(response.headers));*/

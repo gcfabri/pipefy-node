@@ -11,6 +11,10 @@ An unofficial Pipefy API wrapper using node.js
 
 This library is in Alpha.
 
+### Under development
+
+Production version will be released in next month, June.
+
 ## Official Reference
 
 [Pipefy Apiary](http://docs.pipefy.apiary.io)

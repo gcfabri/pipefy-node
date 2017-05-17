@@ -29,3 +29,11 @@
 ##### 1.0.9-alpha - 16 May 2017
 
 - Some bugs
+
+##### 1.0.10-alpha - 17 May 2017
+
+- Bugs n fixes
+
+##### 1.0.11-alpha - 17 May 2017
+
+- Bugs n fixes
