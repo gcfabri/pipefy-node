@@ -6,7 +6,7 @@ function Pipefy(config) {
 
   if(!config) {
     console.error(`No 'config' parameter specified.`);
-  } else if (!config.your_personal_access_token) {
+  } else if(!config.your_personal_access_token) {
     console.error(`No 'your_personal_access_token' specified.`);
   }
 
@@ -37,7 +37,7 @@ function Pipefy(config) {
         'Content-Type': 'application/json',
         'Authorization': bearerToken
       },
-      body: `{  \"query\": \"{ organizations{ id, name} }\"}`
+      body: `{  \"query\": \"{ organizations{ id, name, pipes { name } } }\"}`
     }, function(error, response, body) {
       console.log('Status:', response.statusCode);
       /*console.log('Headers:', JSON.stringify(response.headers));*/
@@ -240,7 +240,7 @@ function Pipefy(config) {
   this.updatePipe = function(params) {
     request({
       method: 'POST',
-      url: 'https://app.pipefy.com/queries/queries',
+      url: baseUrl,
       headers: {
         'Content-Type': 'application/json',
         'Authorization': bearerToken
@@ -272,7 +272,7 @@ function Pipefy(config) {
   this.createPhase = function(params) {
     request({
       method: 'POST',
-      url: 'https://app.pipefy.com/queries/queries',
+      url: baseUrl,
       headers: {
         'Content-Type': 'application/json',
         'Authorization': bearerToken
@@ -288,7 +288,7 @@ function Pipefy(config) {
   this.updatePhase = function(params) {
     request({
       method: 'POST',
-      url: 'https://app.pipefy.com/queries/queries',
+      url: baseUrl,
       headers: {
         'Content-Type': 'application/json',
         'Authorization': bearerToken
@@ -304,7 +304,7 @@ function Pipefy(config) {
   this.deletePhase = function(id) {
     request({
       method: 'POST',
-      url: 'https://app.pipefy.com/queries/queries',
+      url: baseUrl,
       headers: {
         'Content-Type': 'application/json',
         'Authorization': bearerToken
@@ -321,7 +321,7 @@ function Pipefy(config) {
   this.createPhaseField = function(params) {
     request({
       method: 'POST',
-      url: 'https://app.pipefy.com/queries/queries',
+      url: baseUrl,
       headers: {
         'Content-Type': 'application/json',
         'Authorization': bearerToken
@@ -337,7 +337,7 @@ function Pipefy(config) {
   this.updatePhaseField = function(params) {
     request({
       method: 'POST',
-      url: 'https://app.pipefy.com/queries/queries',
+      url: baseUrl,
       headers: {
         'Content-Type': 'application/json',
         'Authorization': bearerToken
@@ -353,7 +353,7 @@ function Pipefy(config) {
   this.deletePhaseField = function(id) {
     request({
       method: 'POST',
-      url: 'https://app.pipefy.com/queries/queries',
+      url: baseUrl,
       headers: {
         'Content-Type': 'application/json',
         'Authorization': bearerToken
@@ -369,7 +369,7 @@ function Pipefy(config) {
   this.createLabel = function(params) {
     request({
       method: 'POST',
-      url: 'https://app.pipefy.com/queries/queries',
+      url: baseUrl,
       headers: {
         'Content-Type': 'application/json',
         'Authorization': bearerToken
@@ -385,7 +385,7 @@ function Pipefy(config) {
   this.updateLabel = function(params) {
     request({
       method: 'POST',
-      url: 'https://app.pipefy.com/queries/queries',
+      url: baseUrl,
       headers: {
         'Content-Type': 'application/json',
         'Authorization': bearerToken
@@ -401,7 +401,7 @@ function Pipefy(config) {
   this.deleteLabel = function(id) {
     request({
       method: 'POST',
-      url: 'https://app.pipefy.com/queries/queries',
+      url: baseUrl,
       headers: {
         'Content-Type': 'application/json',
         'Authorization': bearerToken
@@ -417,7 +417,7 @@ function Pipefy(config) {
   this.createCard = function(params) {
     request({
       method: 'POST',
-      url: 'https://app.pipefy.com/queries/queries',
+      url: baseUrl,
       headers: {
         'Content-Type': 'application/json',
         'Authorization': bearerToken
@@ -433,7 +433,7 @@ function Pipefy(config) {
   this.updateCard = function(params) {
     request({
       method: 'POST',
-      url: 'https://app.pipefy.com/queries/queries',
+      url: baseUrl,
       headers: {
         'Content-Type': 'application/json',
         'Authorization': bearerToken
@@ -449,7 +449,7 @@ function Pipefy(config) {
   this.deleteCard = function(id) {
     request({
       method: 'POST',
-      url: 'https://app.pipefy.com/queries/queries',
+      url: baseUrl,
       headers: {
         'Content-Type': 'application/json',
         'Authorization': bearerToken
@@ -465,7 +465,7 @@ function Pipefy(config) {
   this.moveCardToPhase = function(params) {
     request({
       method: 'POST',
-      url: 'https://app.pipefy.com/queries/queries',
+      url: baseUrl,
       headers: {
         'Content-Type': 'application/json',
         'Authorization': bearerToken
@@ -481,7 +481,7 @@ function Pipefy(config) {
   this.updateCardField = function(params) {
     request({
       method: 'POST',
-      url: 'https://app.pipefy.com/queries/queries',
+      url: baseUrl,
       headers: {
         'Content-Type': 'application/json',
         'Authorization': bearerToken
@@ -497,7 +497,7 @@ function Pipefy(config) {
   this.createComment = function(params) {
     request({
       method: 'POST',
-      url: 'https://app.pipefy.com/queries/queries',
+      url: baseUrl,
       headers: {
         'Content-Type': 'application/json',
         'Authorization': bearerToken
@@ -513,7 +513,7 @@ function Pipefy(config) {
   this.updateComment = function(params) {
     request({
       method: 'POST',
-      url: 'https://app.pipefy.com/queries/queries',
+      url: baseUrl,
       headers: {
         'Content-Type': 'application/json',
         'Authorization': bearerToken
@@ -529,7 +529,7 @@ function Pipefy(config) {
   this.deleteComment = function(id) {
     request({
       method: 'POST',
-      url: 'https://app.pipefy.com/queries/queries',
+      url: baseUrl,
       headers: {
         'Content-Type': 'application/json',
         'Authorization': bearerToken
@@ -545,7 +545,7 @@ function Pipefy(config) {
   this.setRole = function(params) {
     request({
       method: 'POST',
-      url: 'https://app.pipefy.com/queries/queries',
+      url: baseUrl,
       headers: {
         'Content-Type': 'application/json',
         'Authorization': bearerToken
@@ -561,7 +561,7 @@ function Pipefy(config) {
   this.createPipeRelation = function(params) {
     request({
       method: 'POST',
-      url: 'https://app.pipefy.com/queries/queries',
+      url: baseUrl,
       headers: {
         'Content-Type': 'application/json',
         'Authorization': bearerToken
@@ -577,7 +577,7 @@ function Pipefy(config) {
   this.updatePipeRelation = function(params) {
     request({
       method: 'POST',
-      url: 'https://app.pipefy.com/queries/queries',
+      url: baseUrl,
       headers: {
         'Content-Type': 'application/json',
         'Authorization': bearerToken
@@ -593,7 +593,7 @@ function Pipefy(config) {
   this.deletePipeRelation = function(id) {
     request({
       method: 'POST',
-      url: 'https://app.pipefy.com/queries/queries',
+      url: baseUrl,
       headers: {
         'Content-Type': 'application/json',
         'Authorization': bearerToken
@@ -609,7 +609,7 @@ function Pipefy(config) {
   this.createWebhook = function(params) {
     request({
       method: 'POST',
-      url: 'https://app.pipefy.com/queries/queries',
+      url: baseUrl,
       headers: {
         'Content-Type': 'application/json',
         'Authorization': bearerToken
@@ -625,7 +625,7 @@ function Pipefy(config) {
   this.updateWebhook = function(params) {
     request({
       method: 'POST',
-      url: 'https://app.pipefy.com/queries/queries',
+      url: baseUrl,
       headers: {
         'Content-Type': 'application/json',
         'Authorization': bearerToken
@@ -641,7 +641,7 @@ function Pipefy(config) {
   this.deleteWebhook = function(id) {
     request({
       method: 'POST',
-      url: 'https://app.pipefy.com/queries/queries',
+      url: baseUrl,
       headers: {
         'Content-Type': 'application/json',
         'Authorization': bearerToken
