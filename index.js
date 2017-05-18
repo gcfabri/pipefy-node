@@ -213,6 +213,10 @@ function Pipefy(config) {
   };
 
   this.clonePipes = function(params) {
+    var pipe_template_ids = params.pipe_template_ids.map(function(element) {
+      return element;
+    }).join();
+
     return rp({
       method: 'POST',
       url: baseUrl,
@@ -220,7 +224,7 @@ function Pipefy(config) {
         'Content-Type': 'application/json',
         'Authorization': bearerToken
       },
-      body: `{  \"query\": \"mutation{ clonePipes(input: {organization_id: ${params.organization_id}, pipe_template_ids:${params.pipe_template_ids}}){ pipes{ id, name } } }\"}`
+      body: `{  \"query\": \"mutation{ clonePipes(input: {organization_id: ${params.organization_id}, pipe_template_ids:[ ${pipe_template_ids} ]}){ pipes{ id, name } } }\"}`
     }, function(error, response, body) {
       log.debug('Status:', response.statusCode);
       log.debug('Headers:', JSON.stringify(response.headers));
@@ -249,7 +253,7 @@ function Pipefy(config) {
         'Content-Type': 'application/json',
         'Authorization': bearerToken
       },
-      body: `{  \"query\": \"mutation{ createPipe( input: { organization_id: 60993, name: \\"${params.name}\\", labels:[ ${labels} ], members:[ ${members} ], phases:[ ${phases} ], start_form_fields:[ ${start_form_fields} ] } ) { pipe{ name, members{ user{ username } } phases{ name } start_form_fields { id } } } }\"}`
+      body: `{  \"query\": \"mutation{ createPipe( input: { organization_id: ${params.organization_id}, name: \\"${params.name}\\", labels:[ ${labels} ], members:[ ${members} ], phases:[ ${phases} ], start_form_fields:[ ${start_form_fields} ] } ) { pipe{ name, members{ user{ username } } phases{ name } start_form_fields { id } } } }\"}`
     }, function(error, response, body) {
       log.debug('Status:', response.statusCode);
       log.debug('Headers:', JSON.stringify(response.headers));

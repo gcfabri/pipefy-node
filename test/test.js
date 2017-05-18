@@ -1,7 +1,7 @@
 'use strict';
 
 var TEST_PIPEFY_TOKEN =
-  'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJ1c2VyIjp7ImlkIjo4MjI3MSwiZW1haWwiOiJnY2ZhYnJpQGdtYWlsLmNvbSIsImFwcGxpY2F0aW9uIjozOTg1fX0.Iri2Uu8l-3qBVr1jt8yTl7PJqrXD_eHnyyPcyg5LlCzKv-K3c0pAFRJtC5TQHeIy9m5NyzvmfJDpA6sjDldoIg';
+  'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJ1c2VyIjp7ImlkIjo4MjI4NywiZW1haWwiOiJzeXMuYWRtaW5AaW5vYnJheC5jb20iLCJhcHBsaWNhdGlvbiI6Mzk4Nn19.fw-Q1lbD9wJbV0sF6hstvp6r0pDkl12UQfTeAJW15B-nr5fIPkWxUYVLFM16flIqXrMCJLBVhRm8vAeOXqBPcQ';
 
 var expect = require('chai').expect;
 var pipefy = require('../index')({
@@ -135,7 +135,7 @@ describe('Pipefy', function() {
 
   describe('#clonePipes', function() {
     it('should return success on clone pipe from API', function() {
-      return pipefy.clonePipes({ organization_id: 60993, pipe_template_ids: [192157] })
+      return pipefy.clonePipes({ organization_id: 60184, pipe_template_ids: [193397] })
         .then(function(result) {
           expect(JSON.parse(result)).to.have.deep.property('data.clonePipes.pipes');
         });
@@ -145,18 +145,18 @@ describe('Pipefy', function() {
   describe('#createPipe', function() {
     it('should return created pipe from API', function() {
       return pipefy.createPipe({
-        organization_id: 61508,
+        organization_id: 60184,
         name: 'Test project',
         labels: [{
           name: 'Single Label',
           color: '#FF0044'
         }],
         members: [{
-          user_id: 1,
+          user_id: 82287,
           role_name: 'admin'
         }],
         phases: [
-          { name: 'Building' },
+          { name: 'Building', done: false },
           { name: 'Built', done: true }
         ],
         start_form_fields: [{

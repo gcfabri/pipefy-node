@@ -67,4 +67,8 @@
 
 ##### 1.0.0-alpha.beta
 
-- Object array handler fixed
+- Object array handler fix
+
+##### 1.0.1-alpha.beta
+
+- Fix tests
