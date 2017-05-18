@@ -61,3 +61,7 @@
 
 - Small fix
 
+##### 1.3.18-alpha - 18 May 2017
+
+- Change class initialization token property, your_personal_access_token to accessToken
+

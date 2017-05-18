@@ -1,6 +1,5 @@
 'use strict';
 
-var request = require('request');
 var rp = require('request-promise');
 var log = require('loglevel');
 
@@ -8,8 +7,8 @@ function Pipefy(config) {
 
   if(!config) {
     console.error(`No 'config' parameter specified.`);
-  } else if(!config.your_personal_access_token) {
-    console.error(`No 'your_personal_access_token' property specified.`);
+  } else if(!config.accessToken) {
+    console.error(`No 'accessToken' property specified.`);
   }
 
   if(!config.logLevel) {
@@ -19,7 +18,7 @@ function Pipefy(config) {
   }
 
   var baseUrl = 'https://app.pipefy.com/queries';
-  var bearerToken = 'Bearer ' + config.your_personal_access_token;
+  var bearerToken = 'Bearer ' + config.accessToken;
 
   this.getMe = function() {
     return rp({

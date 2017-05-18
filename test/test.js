@@ -5,7 +5,7 @@ var TEST_PIPEFY_TOKEN =
 
 var expect = require('chai').expect;
 var pipefy = require('../index')({
-  'your_personal_access_token': TEST_PIPEFY_TOKEN
+  accessToken: TEST_PIPEFY_TOKEN
 });
 
 describe('Access Token', function() {
