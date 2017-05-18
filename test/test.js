@@ -460,8 +460,4 @@ describe('Pipefy', function() {
     });
   });
 
-  /*
-
-  */
-
 });

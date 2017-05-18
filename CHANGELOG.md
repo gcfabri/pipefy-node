@@ -65,14 +65,14 @@
 
 - Change class initialization property, your_personal_access_token to accessToken
 
-##### 1.0.0-alpha.beta
+##### 1.0.0-alpha.beta - 18 May 2017
 
 - Object array handler fix
 
-##### 1.0.1-alpha.beta
+##### 1.0.1-alpha.beta - 18 May 2017
 
 - Fix tests
 
-##### 1.0.2-alpha.beta
+##### 1.0.2-alpha.beta - 18 May 2017
 
 - Alpha.Beta tests (2/5)
