@@ -229,6 +229,19 @@ function Pipefy(config) {
   };
 
   this.createPipe = function(params) {
+    var labels = params.labels.map(function(element) {
+      return '{ name: \\"' + element.name + '\\", color: \\"' + element.color + '\\" }';
+    }).join();
+    var members = params.members.map(function(element) {
+      return '{ user_id: \\"' + element.user_id + '\\", role_name: \\"' + element.role_name + '\\" }';
+    }).join();
+    var phases = params.phases.map(function(element) {
+      return '{ name: \\"' + element.name + '\\", done: ' + element.done + '}';
+    }).join();
+    var start_form_fields = params.start_form_fields.map(function(element) {
+      return '{ label: \\"' + element.label + '\\", type_id: \\"' + element.type_id + '\\" }';
+    }).join();
+
     return rp({
       method: 'POST',
       url: baseUrl,
@@ -236,7 +249,7 @@ function Pipefy(config) {
         'Content-Type': 'application/json',
         'Authorization': bearerToken
       },
-      body: `{  \"query\": \"mutation{ createPipe( input: { organization_id: 60993, name: \\"${params.name}\\", labels:[ { name: \\"${params.labels[0].name}\\", color:\\"${params.labels[0].color}\\" } ], members:[ { user_id: ${params.members[0].user_id}, role_name: \\"${params.members[0].role_name}\\" } ], phases:[ { name:\\"${params.phases[0].name}\\"}, { name: \\"${params.phases[1].name}\\", done: ${params.phases[1].done}} ], start_form_fields:[ { label: \\"${params.start_form_fields[0].label}\\", type_id: \\"${params.start_form_fields[0].type_id}\\" } ] } ) { pipe{ name, members{ user{ username } } phases{ name } start_form_fields { id } } } }\"}`
+      body: `{  \"query\": \"mutation{ createPipe( input: { organization_id: 60993, name: \\"${params.name}\\", labels:[ ${labels} ], members:[ ${members} ], phases:[ ${phases} ], start_form_fields:[ ${start_form_fields} ] } ) { pipe{ name, members{ user{ username } } phases{ name } start_form_fields { id } } } }\"}`
     }, function(error, response, body) {
       log.debug('Status:', response.statusCode);
       log.debug('Headers:', JSON.stringify(response.headers));
@@ -422,6 +435,10 @@ function Pipefy(config) {
   };
 
   this.createCard = function(params) {
+    var fields_attributes = params.fields_attributes.map(function(element) {
+      return '{ field_id: \\"' + element.field_id + '\\", field_value: \\"' + element.field_value + '\\"}';
+    }).join();
+
     return rp({
       method: 'POST',
       url: baseUrl,
@@ -429,7 +446,7 @@ function Pipefy(config) {
         'Content-Type': 'application/json',
         'Authorization': bearerToken
       },
-      body: `{  \"query\": \"mutation{ createCard(input: {pipe_id: ${params.pipe_id}, title: \\"${params.title}\\", assignee_ids: ${params.assignee_ids}, fields_attributes:{field_id: \\"${params.fields_attributes[0].field_id}\\", field_value: \\"${params.fields_attributes[0].field_value}\\"}}) { card {id, title, due_date, assignees{id, username}, fields {name, value} }}}\"}`
+      body: `{  \"query\": \"mutation{ createCard(input: {pipe_id: ${params.pipe_id}, title: \\"${params.title}\\", assignee_ids: ${params.assignee_ids}, fields_attributes: [${fields_attributes}] }) { card {id, title, due_date, assignees{id, username}, fields {name, value} }}}\"}`
     }, function(error, response, body) {
       log.debug('Status:', response.statusCode);
       log.debug('Headers:', JSON.stringify(response.headers));

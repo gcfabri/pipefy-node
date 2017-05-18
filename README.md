@@ -5,11 +5,11 @@
 [![Travis](https://img.shields.io/travis/gcfabri/pipefy-node.svg?style=flat-square)](https://travis-ci.org/gcfabri/pipefy-node)
 [![Coveralls](https://img.shields.io/coveralls/gcfabri/pipefy-node.svg?style=flat-square)](https://coveralls.io/github/gcfabri/pipefy-node)
 
-An unofficial Pipefy API wrapper using node.js
+An unofficial Pipefy API wrapper using node.js.
 
-### Alpha
+### Alpha.Beta
 
-This library is in Alpha.
+This library is in Alpha.Beta stage.
 
 ### Under development
 
@@ -41,6 +41,6 @@ Get the personal access token from Pipefy on this link: https://app.pipefy.com/t
 
 ## Tests
 ```sh
-    $ npm run cover
+    $ npm test
 ```
 

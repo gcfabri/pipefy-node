@@ -63,5 +63,8 @@
 
 ##### 1.3.18-alpha - 18 May 2017
 
-- Change class initialization token property, your_personal_access_token to accessToken
+- Change class initialization property, your_personal_access_token to accessToken
 
+##### 1.0.0-alpha.beta
+
+- Object array handler fixed
