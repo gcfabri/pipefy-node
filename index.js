@@ -253,7 +253,7 @@ function Pipefy(config) {
         'Content-Type': 'application/json',
         'Authorization': bearerToken
       },
-      body: `{  \"query\": \"mutation{ createPipe( input: { organization_id: ${params.organization_id}, name: \\"${params.name}\\", labels:[ ${labels} ], members:[ ${members} ], phases:[ ${phases} ], start_form_fields:[ ${start_form_fields} ] } ) { pipe{ name, members{ user{ username } } phases{ name } start_form_fields { id } } } }\"}`
+      body: `{  \"query\": \"mutation{ createPipe( input: { organization_id: ${params.organization_id}, name: \\"${params.name}\\", labels:[ ${labels} ], members:[ ${members} ], phases:[ ${phases} ], start_form_fields:[ ${start_form_fields} ] } ) { pipe{ id, name, members{ user{ username } } phases{ name } start_form_fields { id } } } }\"}`
     }, function(error, response, body) {
       log.debug('Status:', response.statusCode);
       log.debug('Headers:', JSON.stringify(response.headers));
@@ -439,9 +439,14 @@ function Pipefy(config) {
   };
 
   this.createCard = function(params) {
-    var fields_attributes = params.fields_attributes.map(function(element) {
-      return '{ field_id: \\"' + element.field_id + '\\", field_value: \\"' + element.field_value + '\\"}';
-    }).join();
+    var fields_attributes;
+    if(params.fields_attributes) {
+      fields_attributes = params.fields_attributes.map(function(element) {
+        return '{ field_id: \\"' + element.field_id + '\\", field_value: \\"' + element.field_value + '\\"}';
+      }).join();
+    } else {
+      fields_attributes = '';
+    }
 
     return rp({
       method: 'POST',

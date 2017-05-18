@@ -72,3 +72,7 @@
 ##### 1.0.1-alpha.beta
 
 - Fix tests
+
+##### 1.0.2-alpha.beta
+
+- Alpha.Beta tests (2/5)
