@@ -57,3 +57,7 @@
 - Unit tests
 - Increased coverage
 
+##### 1.2.18-alpha - 18 May 2017
+
+- Small fix
+
