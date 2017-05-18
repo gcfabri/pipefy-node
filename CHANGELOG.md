@@ -52,3 +52,8 @@
 - Added levelLog support
 - Aplha tests (5/5)
 
+##### 1.2.17-alpha - 18 May 2017
+
+- Unit tests
+- Increased coverage
+
