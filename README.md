@@ -25,6 +25,11 @@ Production version will be released in next month, June.
 This library is distributed on `npm`. In order to add it as a dependency,
 run the following command:
 
+Latest version:
+```sh
+    $ npm i -S pipefy-node@latest
+```
+or
 ```sh
     $ npm i -S pipefy-node
 ```
