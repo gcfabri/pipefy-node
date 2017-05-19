@@ -83,4 +83,8 @@
 
 ##### 1.0.4-alpha.beta - 19 May 2017
 
-- change token for tests
+- Change token for tests
+
+##### 1.1.0-alpha.beta - 19 May 2017
+
+- Added jsdoc comments

@@ -59,3 +59,6 @@ typings/
 
 # File used to make tests under development
 sample.js
+
+# Documentation
+docs/

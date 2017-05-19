@@ -1,3 +1,25 @@
+/** @module pipefy-node  */
+
+/**
+ * Creates a new Pipefy API client
+ * 
+ * @example
+ * 
+ * Basic usage:
+ * 
+ * ```javascript
+ * var pipefy = require('pipefy-node')({
+ *    accessToken: <token>,
+ *    logLevel: '<['info', 'warn', 'debug', 'trace']>'
+ * });
+ * 
+ * pipefy.getMe();
+ * ``` 
+ * @param {object} config - Configuration options object
+ * @param {string} config.accessToken - Personal access token (required)
+ * @param {string} config.logLevel - Set the log level (optional)
+ */
+
 'use strict';
 
 var rp = require('request-promise');
@@ -20,6 +42,12 @@ function Pipefy(config) {
   var baseUrl = 'https://app.pipefy.com/queries';
   var bearerToken = 'Bearer ' + config.accessToken;
 
+  
+  /**
+   * Get information about yourself.
+   * @function
+   * @returns A promise with the response body
+   */
   this.getMe = function() {
     return rp({
       method: 'POST',
@@ -35,7 +63,12 @@ function Pipefy(config) {
       log.debug('Response:', body);
     });
   };
-
+  
+  /**
+   * Get the list of Organizations.
+   * @function 
+   * @returns A promise with the response body
+   */
   this.getOrganizations = function() {
     return rp({
       method: 'POST',
@@ -52,6 +85,12 @@ function Pipefy(config) {
     });
   };
 
+  /**
+   * Get an organization by organization id, with pipes and phases.
+   * @function
+   * @param {number} id - The organization id
+   * @returns A promise with the response body
+   */
   this.getOrganizationById = function(id) {
     return rp({
       method: 'POST',
@@ -68,6 +107,12 @@ function Pipefy(config) {
     });
   };
 
+  /**
+   * Get pipes by pipes ids, with phases and cards.
+   * @function
+   * @param {Array} ids - An array with pipes ids
+   * @returns A promise with the response body
+   */
   this.getPipesByIds = function(ids) {
     return rp({
       method: 'POST',
@@ -84,6 +129,12 @@ function Pipefy(config) {
     });
   };
 
+  /**
+   * Get a pipe by pipe id, with phases and cards.
+   * @function
+   * @param {number} id - A pipe id
+   * @returns A promise with the response body
+   */
   this.getPipeById = function(id) {
     return rp({
       method: 'POST',
@@ -100,6 +151,12 @@ function Pipefy(config) {
     });
   };
 
+  /**
+   * Get a phase by phase id, with cards, fields and cards cane be moved to phases.
+   * @function
+   * @param {number} id - A phase id
+   * @returns A promise with the response body
+   */
   this.getPhaseById = function(id) {
     return rp({
       method: 'POST',
@@ -116,6 +173,12 @@ function Pipefy(config) {
     });
   };
 
+  /**
+   * Get cards by pipe id, with assignees, child relations, fields ...
+   * @function
+   * @param {number} pipe_id - A pipe id 
+   * @returns A promise with the response body
+   */
   this.getCardsByPipeId = function(pipe_id) {
     return rp({
       method: 'POST',
@@ -132,6 +195,12 @@ function Pipefy(config) {
     });
   };
 
+  /**
+   * Get a card by card id, with assignees, child relations, fields ...
+   * @function
+   * @param {number} id - A card id
+   * @returns A promise with the response body
+   */
   this.getCardById = function(id) {
     return rp({
       method: 'POST',
@@ -148,6 +217,12 @@ function Pipefy(config) {
     });
   };
 
+  /**
+   * Get a list of pipe relations by their ids, with properties and the child name
+   * @function
+   * @param {Array} ids - An array with pipe relations ids 
+   * @returns A promise with the response body
+   */
   this.getPipeRelationByIds = function(ids) {
     return rp({
       method: 'POST',
@@ -164,6 +239,14 @@ function Pipefy(config) {
     });
   };
 
+  /**
+   * Mutation to create a organization, in case of success a query is returned.
+   * @function
+   * @param {object} params - The new organization data
+   * @param {string} params.industry - The company industry (e.g.: 'technology', 'consulting')
+   * @param {string} params.name - The company name
+   * @returns A promise with the response body
+   */
   this.createOrganization = function(params) {
     return rp({
       method: 'POST',
@@ -180,6 +263,17 @@ function Pipefy(config) {
     });
   };
 
+  /**
+   * Mutation to update a organization, in case of success a query is returned.
+   * @function
+   * @param {object} params - The new organization data
+   * @param {number} params.id - The organization id
+   * @param {string} params.name - The new organization name
+   * @param {boolean} params.only_admin_can_invite_users - Only admin can invite users
+   * @param {boolean} params.only_admin_can_create_pipes - Only admin can create pipes
+   * @param {boolean} params.force_omniauth_to_normal_users - Force omniauth to normal users
+   * @returns A promise with the response body
+   */
   this.updateOrganization = function(params) {
     return rp({
       method: 'POST',
@@ -196,6 +290,12 @@ function Pipefy(config) {
     });
   };
 
+  /**
+   * Mutation to delete an organization, in case of success a query is returned.
+   * @function
+   * @param {number} id - The organization id
+   * @returns A promise with the response body
+   */
   this.deleteOrganization = function(id) {
     return rp({
       method: 'POST',
@@ -212,6 +312,14 @@ function Pipefy(config) {
     });
   };
 
+  /**
+   * Mutation to clone a pipe, in case of success a query is returned.
+   * @function
+   * @param {object} params - The pipes data
+   * @param {number} params.organization_id - The organization id
+   * @param {Array} params.pipe_template_ids - An array with pipes ids to be used as template
+   * @returns A promise with the response body
+   */
   this.clonePipes = function(params) {
     var pipe_template_ids = params.pipe_template_ids.map(function(element) {
       return element;
@@ -232,6 +340,18 @@ function Pipefy(config) {
     });
   };
 
+  /**
+   * Mutation to create a pipe, in case of success a query is returned.
+   * @function
+   * @param {object} params 
+   * @param {number} params.organization_id - The organization id
+   * @param {string} params.name - The pipe name
+   * @param {Array.<object>} params.labels - An array of objects with 'name' and 'color' properties
+   * @param {Array.<object>} params.members - An array of objects with 'user_id' and 'role_name' properties
+   * @param {Array.<object>} params.phases - An array of objects with 'name' and 'done' properties
+   * @param {Array.<object>} params.start_form_fields - An array of objects with 'label' and 'type_id' properties
+   * @returns A promise with the response body
+   */
   this.createPipe = function(params) {
     var labels = params.labels.map(function(element) {
       return '{ name: \\"' + element.name + '\\", color: \\"' + element.color + '\\" }';
@@ -261,6 +381,18 @@ function Pipefy(config) {
     });
   };
 
+  /**
+   * Mutation to update a pipe, in case of success a query is returned.
+   * @function
+   * @param {object} params - The pipe new data
+   * @param {number} params.id - The pipe id
+   * @param {string} params.name - The pipe name
+   * @param {boolean} params.anyone_can_create_card - Anyone can create cards
+   * @param {boolean} params.public - It is public
+   * @param {boolean} params.only_admin_can_remove_cards - Only admin can remove cards
+   * @param {boolean} params.only_assignees_can_edit_cards - Only assignees can edit cards
+   * @returns A promise with the response body
+   */
   this.updatePipe = function(params) {
     return rp({
       method: 'POST',
@@ -277,6 +409,12 @@ function Pipefy(config) {
     });
   };
 
+  /**
+   * Mutation to delete a pipe, in case of success a query is returned.
+   * @function
+   * @param {number} id - The pipe id
+   * @returns A promise with the response body
+   */
   this.deletePipe = function(id) {
     return rp({
       method: 'POST',
@@ -293,6 +431,18 @@ function Pipefy(config) {
     });
   };
 
+  /**
+   * Mutation to create a phase in a pipe, in case of success a query is returned.
+   * @function
+   * @param {object} params - The new phase data
+   * @param {number} params.pipe_id - The pipe id
+   * @param {string} params.name - The phase name
+   * @param {string} params.description - The phase description
+   * @param {boolean} params.done - It is done
+   * @param {boolean} params.only_admin_can_move_to_previous - Only admin can move to previous
+   * @param {boolean} params.can_receive_card_directly_from_draft - Can receive card directly from draft
+   * @returns A promise with the response body
+   */
   this.createPhase = function(params) {
     return rp({
       method: 'POST',
@@ -309,6 +459,17 @@ function Pipefy(config) {
     });
   };
 
+  /**
+   * Mutation to update a phase, in case of success a query is returned.
+   * @function
+   * @param {object} params - The new phase data
+   * @param {number} params.id - The phase id
+   * @param {string} params.name - The phase name
+   * @param {boolean} params.only_admin_can_move_to_previous - Only admin can move to previous
+   * @param {boolean} params.can_receive_card_directly_from_draft - Can receive card directly from draft
+   * @param {string} params.description - The phase description
+   * @returns A promise with the response body
+   */
   this.updatePhase = function(params) {
     return rp({
       method: 'POST',
@@ -325,6 +486,13 @@ function Pipefy(config) {
     });
   };
 
+
+  /**
+   * Mutation to delete a phase of a pipe, in case of success a query is returned.
+   * @function
+   * @param {number} id - The phase id
+   * @returns A promise with the response body
+   */
   this.deletePhase = function(id) {
     return rp({
       method: 'POST',
@@ -341,7 +509,22 @@ function Pipefy(config) {
     });
   };
 
-
+  /**
+   * Mutation to create a phase field, in case of success a query is returned.
+   * @function
+   * @param {object} params - The phase field new data
+   * @param {number} params.phase_id - The phase id
+   * @param {string} params.type - The phase type
+   * @param {string} params.label - The phase label
+   * @param {string} params.description - The phase description
+   * @param {boolean} params.required - It is required
+   * @param {string} params.help - Help text
+   * @param {boolean} params.editable - It is editable
+   * @param {boolean} params.can_create_database_record - Can create database record
+   * @param {boolean} params.can_have_multiple_database_records - Can have multiple database records
+   * @param {boolean} params.sync_with_card - Sync with card
+   * @returns A promise with the response body
+   */
   this.createPhaseField = function(params) {
     return rp({
       method: 'POST',
@@ -358,6 +541,19 @@ function Pipefy(config) {
     });
   };
 
+  /**
+   * Mutation to update a phase field, in case of success a query is returned.
+   * @function
+   * @param {object} params - The new phase field data
+   * @param {number} params.id - The phase field id
+   * @param {number} params.index - Phase index
+   * @param {string} params.label - The phase field label
+   * @param {boolean} params.required - It is required
+   * @param {boolean} params.editable - It is editable
+   * @param {string} params.help - Help text
+   * @param {string} params.description - The phase field description 
+   * @returns A promise with the response body
+   */
   this.updatePhaseField = function(params) {
     return rp({
       method: 'POST',
@@ -374,6 +570,12 @@ function Pipefy(config) {
     });
   };
 
+  /**
+   * Mutation to delete a phase field, in case of success a query is returned.
+   * @function
+   * @param {number} id - The phase field id
+   * @returns A promise with the response body
+   */
   this.deletePhaseField = function(id) {
     return rp({
       method: 'POST',
@@ -390,6 +592,15 @@ function Pipefy(config) {
     });
   };
 
+  /**
+   * Mutation to create a label, in case of success a query is returned.
+   * @function
+   * @param {object} params - The label new data
+   * @param {number} params.pipe_id - The pipe id
+   * @param {string} params.name - The label name
+   * @param {string} params.color - The label color
+   * @returns A promise with the response body
+   */
   this.createLabel = function(params) {
     return rp({
       method: 'POST',
@@ -406,6 +617,15 @@ function Pipefy(config) {
     });
   };
 
+  /**
+   * Mutation to update a label, in case of success a query is returned.
+   * @function
+   * @param {object} params - The label new data
+   * @param {number} params.id - The label id
+   * @param {string} params.color - The label color
+   * @param {string} params.name - The label name
+   * @returns A promise with the response body
+   */
   this.updateLabel = function(params) {
     return rp({
       method: 'POST',
@@ -422,6 +642,12 @@ function Pipefy(config) {
     });
   };
 
+  /**
+   * Mutation to delete a label, in case of success a query is returned.
+   * @function
+   * @param {number} id - The label id
+   * @returns A promise with the response body
+   */
   this.deleteLabel = function(id) {
     return rp({
       method: 'POST',
@@ -438,6 +664,17 @@ function Pipefy(config) {
     });
   };
 
+  /**
+   * The endpoint to create a card, in case of success a query is returned. When fields_attributes is passed as parameter, the field_value of first field_attribute replaces the card title.
+   * @function
+   * @param {object} params - The card new data
+   * @param {number} params.pipe_id - The pipe id
+   * @param {string} params.title - The card title
+   * @param {string} params.due_date - Date in string format
+   * @param {Array.} params.assigne_ids - An array with assignes ids numbers
+   * @param {Array.} params.label_ids - An array with labels ids numbers
+   * @returns A promise with the response body
+   */
   this.createCard = function(params) {
     var fields_attributes;
     if(params.fields_attributes) {
@@ -463,6 +700,17 @@ function Pipefy(config) {
     });
   };
 
+  /**
+   * The endpoint to update a card, in case of success a query is returned.
+   * @function
+   * @param {object} params - The card new data
+   * @param {number} params.id - The card id
+   * @param {string} params.title - The card titlte
+   * @param {string} params.due_date - Date in string format
+   * @param {Array.} params.assigne_ids - An array with assignes ids numbers
+   * @param {Array.} params.label_ids - An array with labels ids numbers
+   * @returns A promise with the response body
+   */
   this.updateCard = function(params) {
     return rp({
       method: 'POST',
@@ -479,6 +727,12 @@ function Pipefy(config) {
     });
   };
 
+  /**
+   * The endpoint to delete a card, in case of success a query "success": true is returned.
+   * @function
+   * @param {number} id - The card id
+   * @returns A promise with the response body
+   */
   this.deleteCard = function(id) {
     return rp({
       method: 'POST',
@@ -495,6 +749,14 @@ function Pipefy(config) {
     });
   };
 
+  /**
+   * The endpoint to move a card to a phase, in case of success a card's query is returned.
+   * @function
+   * @param {object} params
+   * @param {number} params.card_id - The card id
+   * @param {number} params.phase_id - The phase id 
+   * @returns A promise with the response body
+   */
   this.moveCardToPhase = function(params) {
     return rp({
       method: 'POST',
@@ -527,6 +789,14 @@ function Pipefy(config) {
     });
   };*/
 
+  /**
+   * Mutation to create a comment to a card, in case of success a query is returned.
+   * @function
+   * @param {object} params - The comment new data
+   * @param {number} params.card_id - The card id
+   * @param {string} params.text - The comment text
+   * @returns A promise with the response body
+   */
   this.createComment = function(params) {
     return rp({
       method: 'POST',
@@ -543,6 +813,14 @@ function Pipefy(config) {
     });
   };
 
+  /**
+   * Mutation to update a comment, in case of success a query is returned.
+   * @function
+   * @param {object} params - The comment new data
+   * @param {number} params.id - The comment id
+   * @param {string} params.text - The comment text
+   * @returns A promise with the response body
+   */
   this.updateComment = function(params) {
     return rp({
       method: 'POST',
@@ -559,6 +837,12 @@ function Pipefy(config) {
     });
   };
 
+  /**
+   * Mutation to delete a comment of a Card, in case of success a query is returned.
+   * @function
+   * @param {number} id - The comment id 
+   * @returns A promise with the response body
+   */
   this.deleteComment = function(id) {
     return rp({
       method: 'POST',
@@ -575,6 +859,16 @@ function Pipefy(config) {
     });
   };
 
+  /**
+   * Mutation to set a user's role, in case of success a query is returned.
+   * @function
+   * @param {object} params - The role data
+   * @param {number} params.pipe_id - The pipe id
+   * @param {number} params.organization_id - The organization id
+   * @param {number} params.member.user_id - The member user id
+   * @param {string} params.member.role_name - The member role name
+   * @returns 
+   */
   this.setRole = function(params) {
     return rp({
       method: 'POST',
@@ -591,6 +885,22 @@ function Pipefy(config) {
     });
   };
 
+  /**
+   * Mutation to create a pipe relation between two pipes, in case of success a query is returned.
+   * @function
+   * @param {object} params - The pipe relation new data
+   * @param {number} params.parent_id - Pipe parent id
+   * @param {number} params.child_id - Pipe child id
+   * @param {string} params.name - Pipe relation name
+   * @param {boolean} params.child_must_exist_to_move_parent - Child must exist to move parent
+   * @param {boolean} params.child_must_exist_to_finish_parent - Child must exist to finish parent
+   * @param {boolean} params.all_children_must_be_done_to_finish_parent - All children must to be done to finish parent
+   * @param {boolean} params.all_children_must_be_done_to_move_parent - All children must be done to move parent
+   * @param {boolean} params.can_create_connected_cards - Can create connected cards
+   * @param {boolean} params.can_search_connected_cards - Can search connected cards
+   * @param {boolean} params.can_connect_multiple_cards - Can connect multiple cards
+   * @returns A promise with the response body
+   */
   this.createPipeRelation = function(params) {
     return rp({
       method: 'POST',
@@ -607,6 +917,21 @@ function Pipefy(config) {
     });
   };
 
+  /**
+   * Mutation to update a pipe relation, in case of success a query is returned.
+   * @function
+   * @param {object} params - The pipe relation new data
+   * @param {number} params.id - The pipe relation id
+   * @param {string} params.name - The pipe relation new name
+   * @param {boolean} params.child_must_exist_to_move_parent - Child must exist to move parent
+   * @param {boolean} params.child_must_exist_to_finish_parent - Child must exist to finish parent
+   * @param {boolean} params.all_children_must_be_done_to_finish_parent - All children must to be done to finish parent
+   * @param {boolean} params.all_children_must_be_done_to_move_parent - All children must be done to move parent
+   * @param {boolean} params.can_create_connected_cards - Can create connected cards
+   * @param {boolean} params.can_search_connected_cards - Can search connected cards
+   * @param {boolean} params.can_connect_multiple_cards - Can connect multiple cards
+   * @returns A promise with the response body
+   */
   this.updatePipeRelation = function(params) {
     return rp({
       method: 'POST',
@@ -623,6 +948,12 @@ function Pipefy(config) {
     });
   };
 
+  /**
+   * Mutation to delete a pipe relation, in case of success a query "success": true is returned.
+   * @function
+   * @param {number} id - The pipe relation id
+   * @returns A promise with the response body
+   */
   this.deletePipeRelation = function(id) {
     return rp({
       method: 'POST',
