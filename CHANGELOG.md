@@ -76,3 +76,7 @@
 ##### 1.0.2-alpha.beta - 18 May 2017
 
 - Alpha.Beta tests (2/5)
+
+##### 1.0.3-alpha.beta - 18 May 2017
+
+- npm donwloads badge
