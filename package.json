@@ -1,6 +1,6 @@
 {
   "name": "pipefy-node",
-  "version": "1.0.0-beta",
+  "version": "1.0.1-beta",
   "description": "An unofficial Pipefy API wrapper using node.js",
   "main": "index.js",
   "scripts": {
