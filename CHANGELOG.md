@@ -80,3 +80,7 @@
 ##### 1.0.3-alpha.beta - 18 May 2017
 
 - npm donwloads badge
+
+##### 1.0.4-alpha.beta - 19 May 2017
+
+- change token for tests

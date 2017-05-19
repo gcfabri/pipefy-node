@@ -1,14 +1,14 @@
 'use strict';
 
 var TEST_PIPEFY_TOKEN =
-  'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJ1c2VyIjp7ImlkIjo4MjI4NywiZW1haWwiOiJzeXMuYWRtaW5AaW5vYnJheC5jb20iLCJhcHBsaWNhdGlvbiI6Mzk4Nn19.fw-Q1lbD9wJbV0sF6hstvp6r0pDkl12UQfTeAJW15B-nr5fIPkWxUYVLFM16flIqXrMCJLBVhRm8vAeOXqBPcQ';
+  'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJ1c2VyIjp7ImlkIjo4MjI3MSwiZW1haWwiOiJnY2ZhYnJpQGdtYWlsLmNvbSIsImFwcGxpY2F0aW9uIjozOTg1fX0.Iri2Uu8l-3qBVr1jt8yTl7PJqrXD_eHnyyPcyg5LlCzKv-K3c0pAFRJtC5TQHeIy9m5NyzvmfJDpA6sjDldoIg';
 
 var expect = require('chai').expect;
 var pipefy = require('../index')({
   accessToken: TEST_PIPEFY_TOKEN
 });
 
-var USER_ID = 82287;
+var USER_ID = 82271;
 
 var ORGANIZATION_ID, PIPE_ID, CLONE_PIPE_ID, PIPE_RELATION_ID, LABEL_ID, PHASE_ID, PHASE_FIELD_ID, CARD_ID, COMMENT_ID;
 
