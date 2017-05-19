@@ -8,9 +8,9 @@
 
 An unofficial Pipefy API wrapper using node.js.
 
-### Alpha.Beta
+### Beta
 
-This library is in Alpha.Beta stage.
+This library is in Beta stage.
 
 ### Under development
 

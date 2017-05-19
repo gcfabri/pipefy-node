@@ -88,3 +88,7 @@
 ##### 1.1.0-alpha.beta - 19 May 2017
 
 - Added jsdoc comments
+
+##### 1.0.0-beta - 19 May 2017
+
+- Beta stage started
