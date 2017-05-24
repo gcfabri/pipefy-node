@@ -1,6 +1,6 @@
 {
   "name": "pipefy-node",
-  "version": "1.0.1-beta",
+  "version": "1.1.0-beta",
   "description": "An unofficial Pipefy API wrapper using node.js",
   "main": "index.js",
   "scripts": {
@@ -15,9 +15,9 @@
     "url": "git+https://github.com/gcfabri/pipefy-node.git"
   },
   "keywords": [
+    "nodejs",
     "pipefy",
-    "node",
-    "npm"
+    "graphql"
   ],
   "author": "Gabriel Fabri <gcfabri@gmail.com> (https://github.com/gcfabri)",
   "license": "MIT",

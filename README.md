@@ -45,6 +45,12 @@ Get the personal access token from Pipefy on this link: https://app.pipefy.com/t
     });
 ```
 
+## GraphQL
+
+After authenticating to Pipefy, you can explore the API through the following web interface:
+
+https://app.pipefy.com/graphiql
+
 ## Tests
 ```sh
     $ npm test

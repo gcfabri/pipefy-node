@@ -1,3 +1,7 @@
+##### 1.1.0-beta - 24 May 2017
+
+- Method for custom querying added
+
 ##### 1.0.1-beta - 19 May 2017
 
 - Update changelog
