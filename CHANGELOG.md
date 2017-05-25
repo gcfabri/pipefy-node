@@ -1,3 +1,7 @@
+##### 1.1.1-beta - 25 May 2017
+
+- Added current_phase response on getCardById method
+
 ##### 1.1.0-beta - 24 May 2017
 
 - Method for custom querying added

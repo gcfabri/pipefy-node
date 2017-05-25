@@ -41,8 +41,13 @@ function Pipefy(config) {
 
   var baseUrl = 'https://app.pipefy.com/queries';
   var bearerToken = 'Bearer ' + config.accessToken;
-
-
+  
+  /**
+   * Custom querying
+   * @function
+   * @param {string} body - string of body request
+   * @returns 
+   */
   this.customQuery = function(body) {
     return rp({
       method: 'POST',
@@ -225,7 +230,7 @@ function Pipefy(config) {
         'Content-Type': 'application/json',
         'Authorization': bearerToken
       },
-      body: `{  \"query\": \"{ card(id: ${id}) { pipe { id } title assignees { id, username } child_relations { name, cards { id } } fields { name, value, phase_field { id } } } }\"}`
+      body: `{  \"query\": \"{ card(id: ${id}) { current_phase { id, name } pipe { id } title assignees { id, username } child_relations { name, cards { id } } fields { name, value, phase_field { id } } } }\"}`
     }, function(error, response, body) {
       log.debug('Status:', response.statusCode);
       log.debug('Headers:', JSON.stringify(response.headers));
