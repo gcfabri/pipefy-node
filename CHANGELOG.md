@@ -1,3 +1,7 @@
+##### 1.0.0 - 26 Jun 2017
+
+- Production
+
 ##### 1.1.1-beta - 25 May 2017
 
 - Added current_phase response on getCardById method
