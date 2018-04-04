@@ -2,38 +2,46 @@
   "name": "pipefy-node",
   "version": "1.0.0",
   "description": "An unofficial Pipefy API wrapper using node.js",
-  "main": "index.js",
-  "scripts": {
-    "test": "mocha --reporter spec",
-    "cover": "node_modules/istanbul/lib/cli.js cover node_modules/mocha/bin/_mocha -- -R spec test/*"
-  },
-  "engines": {
-    "node": ">=8.1.2"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/gcfabri/pipefy-node.git"
-  },
   "keywords": [
     "nodejs",
     "pipefy",
     "graphql"
   ],
-  "author": "Gabriel Fabri <gcfabri@gmail.com> (https://github.com/gcfabri)",
   "license": "MIT",
+  "homepage": "https://github.com/gcfabri/pipefy-node#readme",
   "bugs": {
     "url": "https://github.com/gcfabri/pipefy-node/issues"
   },
-  "homepage": "https://github.com/gcfabri/pipefy-node#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gcfabri/pipefy-node.git"
+  },
+  "author": "Gabriel Fabri <gcfabri@gmail.com> (https://github.com/gcfabri)",
+  "main": "lib/pipefy.js",
+  "scripts": {
+    "dev": "nodemon dev.js --exec babel-node",
+    "test": "mocha --reporter spec",
+    "cover": "node_modules/istanbul/lib/cli.js cover node_modules/mocha/bin/_mocha -- -R spec test/*",
+    "prepublish": "babel --presets @babel/env src -d lib"
+  },
+  "dependencies": {
+    "graphql-request": "^1.5.1",
+    "loglevel": "^1.6.1",
+    "request": "^2.81.0",
+    "request-promise": "^4.2.1"
+  },
   "devDependencies": {
+    "@babel/cli": "^7.0.0-beta.44",
+    "@babel/core": "^7.0.0-beta.44",
+    "@babel/node": "^7.0.0-beta.44",
+    "@babel/preset-env": "^7.0.0-beta.44",
     "chai": "^3.5.0",
     "coveralls": "^2.13.1",
     "istanbul": "^0.4.5",
-    "mocha": "^3.4.1"
+    "mocha": "^3.4.1",
+    "nodemon": "^1.17.3"
   },
-  "dependencies": {
-    "loglevel": "^1.4.1",
-    "request": "^2.81.0",
-    "request-promise": "^4.2.1"
+  "engines": {
+    "yarn": "^1.5.1"
   }
 }

@@ -57,8 +57,11 @@ typings/
 # dotenv environment variables file
 .env
 
-# File used to make tests under development
-sample.js
-
 # Documentation
 docs/
+
+# Library build
+lib/
+
+# Development
+dev.js
