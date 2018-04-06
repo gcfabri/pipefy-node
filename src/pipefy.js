@@ -619,5 +619,333 @@ export default class Pipefy {
       expiration_time_by_unit,
       expiration_unit
     };
+    try {
+      return await this.client.request(query, variables);
+    } catch (err) {
+      log.debug(err);
+    }
+  }
+
+  /**
+   * Mutation to delete a pipe, in case of success success: true is returned.
+   *
+   * @async
+   * @function deletePipe
+   * @param {number} id Pipe identifier
+   * @returns {Promise.<Object>} A Promise with the response data.
+   * @memberof Pipefy
+   */
+  async deletePipe(id) {
+    const query = `
+      mutation deletePipe($id: ID!) {
+        deletePipe(input: { id: $id }) {
+          success
+        }
+      }
+    `;
+    const variables = { id };
+    try {
+      return await this.client.request(query, variables);
+    } catch (err) {
+      log.debug(err);
+    }
+  }
+
+  /**
+   * Get a phase by its identifier.
+   *
+   * @async
+   * @function showPhase
+   * @param {number} id Pipe identifier
+   * @returns {Promise.<Object>} A Promise with the response data.
+   * @memberof Pipefy
+   */
+  async showPhase(id) {
+    const query = `
+      query showPhase($id: ID!) {
+        phase(id: $id) {
+          id
+          name
+          cards_count
+          cards {
+            edges {
+              node {
+                id
+                title
+              }
+            }
+          }
+          fields {
+            id
+          }
+        }
+      }
+    `;
+    const variables = { id };
+    try {
+      return await this.client.request(query, variables);
+    } catch (err) {
+      log.debug(err);
+    }
+  }
+
+  /**
+   * Get a phase by its identifier.
+   *
+   * @async
+   * @function createPhase
+   * @param {number} id Pipe identifier
+   * @param {string} name Phase name
+   * @param {Boolean} done Done true or false
+   * @param {number} lateness_time Lateness time
+   * @param {string} description Description
+   * @param {Boolean} can_receive_card_directly_from_draft Can receive card directly from draft
+   * @returns {Promise.<Object>} A Promise with the response data.
+   * @memberof Pipefy
+   */
+  async createPhase(
+    pipe_id,
+    name,
+    done,
+    lateness_time,
+    description,
+    can_receive_card_directly_from_draft
+  ) {
+    const query = `
+      mutation createPhase($pipe_id: ID!, $name: String!, $done: Boolean!, $lateness_time: Int, $description: String!, $can_receive_card_directly_from_draft: Boolean) {
+        createPhase(
+          input: {
+            pipe_id: $pipe_id
+            name: $name
+            done: $done
+            lateness_time: $lateness_time
+            description: $description
+            can_receive_card_directly_from_draft: $can_receive_card_directly_from_draft
+          }
+        ) {
+          phase {
+            id
+            name
+          }
+        }
+      }
+    `;
+    const variables = {
+      pipe_id,
+      name,
+      done,
+      lateness_time,
+      description,
+      can_receive_card_directly_from_draft
+    };
+    try {
+      return await this.client.request(query, variables);
+    } catch (err) {
+      log.debug(err);
+    }
+  }
+
+  /**
+   * Mutation to update a phase, in case of success a query is returned.
+   *
+   * @async
+   * @function updatePhase
+   * @param {number} id Pipe identifier
+   * @param {string} name Phase name
+   * @param {Boolean} done Done true or false
+   * @param {number} lateness_time Lateness time
+   * @param {string} description Description
+   * @param {Boolean} can_receive_card_directly_from_draft Can receive card directly from draft
+   * @returns {Promise.<Object>} A Promise with the response data.
+   * @memberof Pipefy
+   */
+  async updatePhase(
+    id,
+    name,
+    done,
+    description,
+    can_receive_card_directly_from_draft
+  ) {
+    const query = `
+      mutation updatePhase($id: ID!, $name: String, $done: Boolean, $description: String, $can_receive_card_directly_from_draft: Boolean) {
+        updatePhase(
+          input: {
+            id: $id
+            name: $name
+            done: $done
+            description: $description
+            can_receive_card_directly_from_draft: $can_receive_card_directly_from_draft
+          }
+        ) {
+          phase {
+            id
+            name
+          }
+        }
+      }
+    `;
+    const variables = {
+      id,
+      name,
+      done,
+      description,
+      can_receive_card_directly_from_draft
+    };
+    try {
+      return await this.client.request(query, variables);
+    } catch (err) {
+      log.debug(err);
+    }
+  }
+
+  /**
+   * Mutation to delete a phase of a pipe, in case of success success: true is returned.
+   *
+   * @async
+   * @function deletePhase
+   * @param {number} id Pipe identifier
+   * @returns {Promise.<Object>} A Promise with the response data.
+   * @memberof Pipefy
+   */
+  async deletePhase(id) {
+    const query = `
+      mutation deletePhase($id: ID!) {
+        deletePhase( input: { id: $id }) {
+          success
+        }
+      }
+    `;
+    const variables = { id };
+    try {
+      return await this.client.request(query, variables);
+    } catch (err) {
+      log.debug(err);
+    }
+  }
+
+  /**
+   * Mutation to create a phase field, in case of success a query is returned.
+   *
+   * @async
+   * @function createPhaseField
+   * @param {number} phase_id Phase identifier
+   * @param {string} type Phase field type
+   * @param {string} label Phase field label
+   * @param {Array.<string>} options Phase field options
+   * @param {string} description Phase description
+   * @param {Boolean} required Phase field require true or false
+   * @param {Boolean} editable Phase field editable true or false
+   * @returns {Promise.<Object>} A Promise with the response data.
+   * @memberof Pipefy
+   */
+  async createPhaseField(
+    phase_id,
+    type,
+    label,
+    options,
+    description,
+    required,
+    editable
+  ) {
+    const query = `
+      mutation createPhaseField($phase_id: ID!, $type: String!, $label: String!, $options: OptionInput!, $description: String!, $required: Boolean!, $editable: Boolean!) {
+        createPhaseField(
+          input: {
+            phase_id: $phase_id
+            type: $type
+            label: $label
+            options: $options
+            description: $description
+            required: $required
+            editable: $editable
+          }
+        ) {
+          phase_field {
+            id
+            label
+          }
+        }
+      }
+    `;
+    const variables = {
+      phase_id,
+      type,
+      label,
+      options,
+      description,
+      required,
+      editable
+    };
+    try {
+      return await this.client.request(query, variables);
+    } catch (err) {
+      log.debug(err);
+    }
+  }
+
+  /**
+   * Mutation to update a phase field, in case of success a query is returned.
+   *
+   * @async
+   * @function updatePhaseField
+   * @param {number} phase_id Phase identifier
+   * @param {string} type Phase field type
+   * @param {string} label Phase field label
+   * @param {Array.<string>} options Phase field options
+   * @param {Boolean} required Phase field require true or false
+   * @param {Boolean} editable Phase field editable true or false
+   * @returns {Promise.<Object>} A Promise with the response data.
+   * @memberof Pipefy
+   */
+  async updatePhaseField(id, label, options, required, editable) {
+    const query = `
+      mutation updatePhaseField($id: ID!, $label: String, $options: String!, $required: Boolean!, $editable: Boolean!) {
+        updatePhaseField(
+          input: {
+            id: "did_you_finish_the_task"
+            label: "Have you finished the task?"
+            options: ["Yep", "Nope"]
+            required: false
+            editable: true
+          }
+        ) {
+          phase_field {
+            id
+            label
+          }
+        }
+      }
+    `;
+    const variables = { id, label, options, required, editable };
+    try {
+      return await this.client.request(query, variables);
+    } catch (err) {
+      log.debug(err);
+    }
+  }
+
+  /**
+   * Mutation to delete a phase field, in case of success success: true is returned.
+   *
+   * @async
+   * @function deletePhaseField
+   * @param {number} id Phase field identifier
+   * @returns {Promise.<Object>} A Promise with the response data.
+   * @memberof Pipefy
+   */
+  async deletePhaseField(id) {
+    const query = `
+      mutation deletePhaseField($id: ID!) {
+        deletePhaseField(input: {id: $id}){
+          success
+        }
+      }
+    `;
+    const variables = { id };
+    try {
+      return await this.client.request(query, variables);
+    } catch (err) {
+      log.debug(err);
+    }
   }
 }
