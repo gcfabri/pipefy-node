@@ -1,3 +1,7 @@
+##### 1.1.0 - 28 Nov 2018
+
+- Mazuh PR
+
 ##### 1.0.0 - 26 Jun 2017
 
 - Production
