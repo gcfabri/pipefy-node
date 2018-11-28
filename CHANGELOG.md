@@ -1,3 +1,7 @@
+#### 1.1.0 - 28 Nov 2018
+
+- on creating card, don't break if no assignee ids were provided (Mazuh PR)
+
 ##### 1.0.0 - 26 Jun 2017
 
 - Production
